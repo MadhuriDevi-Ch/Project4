@@ -70,9 +70,9 @@ public class NewEvent extends HttpServlet {
 		doe = request.getParameter("date");
 		contact = request.getParameter("contact");
 		
-		String eventTiming = doe.concat(time);
+//		String eventTiming = doe.concat(" "+time+"");
 		try {
-			status = CommonServer.db.updateEventTable(email, eventName, category, location, description, eventTiming, maxTickets, contact);
+			status = CommonServer.db.updateEventTable(email, eventName, category, location, description, doe, maxTickets, contact);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -15,7 +15,7 @@ public class CommonServer {
 
 	public static void main(String[] args) throws Exception {
 
-		Server server = new Server(8080);
+		Server server = new Server(7070);
 
 		// create a ServletHander to attach servlets
 		ServletContextHandler servhandler = new ServletContextHandler(ServletContextHandler.SESSIONS);

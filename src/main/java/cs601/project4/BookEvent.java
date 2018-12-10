@@ -66,12 +66,19 @@ public class BookEvent extends HttpServlet {
 		ticketCount = Integer.parseInt(request.getParameter("count"));
 		userEmail = request.getParameter("username");
 		
-		
+		PrintWriter out = response.getWriter();
 		try {
 			int userId = CommonServer.db.updateTransactionTable(eventId, ticketCount, userEmail);
 			if(userId !=0) {
 			CommonServer.db.updateTicketSummaryTable(eventId, ticketCount, userId);
+			browserBody = "<html><title>Transfer Tickets</title>" + "<body>Booking Sucess</body>"
+					+ "<form action=\"/useraccount\" method=\"get\">" + "<br>"
+					+ "<input type =\"hidden\" name=\"username\" value=" + userEmail + ">"
+					+ "<input type=\"submit\" value=\"Account Details\">" + "</form></html>";
+
+			out.println(browserBody);
 			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
