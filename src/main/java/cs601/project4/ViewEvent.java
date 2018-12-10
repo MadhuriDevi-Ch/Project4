@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/*
+ * This class is called when the user(authenicated or new user) wants to view the event details
+ */
 public class ViewEvent extends HttpServlet {
 
 	ResultSet eventResult;

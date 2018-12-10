@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/*
+ * This class displays the list of events and the corresponding options to book, new, create events
+ */
 public class LoginDisplay extends HttpServlet{
 	private String browserBody;
 	ResultSet eventResult;

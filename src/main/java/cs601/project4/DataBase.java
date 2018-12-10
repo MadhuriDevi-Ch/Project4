@@ -30,8 +30,8 @@ public class DataBase {
 		// format "jdbc:mysql://[hostname][:port]/[dbname]"
 		// note: if connecting through an ssh tunnel make sure to use 127.0.0.1 and
 		// also to that the ports are set up correctly
-		String urlString = "jdbc:mysql://sql.cs.usfca.edu/"+db;
-//		String urlString = "jdbc:mysql://127.0.0.1/" + db;
+//		String urlString = "jdbc:mysql://sql.cs.usfca.edu/"+db;
+		String urlString = "jdbc:mysql://127.0.0.1/" + db;
 		// Must set time zone explicitly in newer versions of mySQL.
 		String timeZoneSettings = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 

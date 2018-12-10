@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/*
+ * this class is called when the user wishes to transfer tickets to another valid user
+ */
 public class TicketTransfer extends HttpServlet {
 	private String browserBody;
 	private String userEmail;

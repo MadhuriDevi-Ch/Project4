@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/*
+ * This class displayes all the user details, hosted event details, transactions for the events for which tickets are booked
+ */
 public class UserAccount extends HttpServlet {
 	private String browserBody;
 	ResultSet userResult;

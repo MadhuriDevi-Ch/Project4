@@ -8,7 +8,9 @@ import java.util.Arrays;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/*
+ * This class is called when there is a new user and he wants to register in the website
+ */
 public class UserRegistration extends HttpServlet {
 	private String browserBody;
 	private String firstName;

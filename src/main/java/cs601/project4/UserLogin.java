@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/*
+ * This class is called when the user is trying to login. 
+ * If the login validation is successful the page will be redirected to LoginDisplay.class
+ */
 public class UserLogin extends HttpServlet {
 	private String browserBody;
 	private String userEmail;

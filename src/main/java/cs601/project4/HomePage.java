@@ -1,3 +1,4 @@
+
 package main.java.cs601.project4;
 
 import java.io.IOException;
@@ -12,6 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/*
+ * This class is the intial page when the user opens the link in the browser before login
+ */
 public class HomePage extends HttpServlet {
 	private String browserBody;
 	ResultSet eventResult;

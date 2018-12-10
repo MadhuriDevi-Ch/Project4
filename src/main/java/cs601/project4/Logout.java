@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
+/*
+ * This class is called when the user tried to logout and the corresponding session is invalidated
+ */
+
 public class Logout extends HttpServlet{
 	private String browserBody;
 

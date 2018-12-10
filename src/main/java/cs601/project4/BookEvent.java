@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/*
+ * This class is called when when the user tries to book ticket for Event
+ */
 public class BookEvent extends HttpServlet {
 	private String browserBody;
 	private int eventId;

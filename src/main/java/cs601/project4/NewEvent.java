@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/*
+ * This class is available for any logged in user to create an event
+ */
 public class NewEvent extends HttpServlet {
 	private String browserBody;
 	private String eventName;
