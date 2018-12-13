@@ -30,8 +30,8 @@ public class DataBase {
 		// format "jdbc:mysql://[hostname][:port]/[dbname]"
 		// note: if connecting through an ssh tunnel make sure to use 127.0.0.1 and
 		// also to that the ports are set up correctly
-		String urlString = "jdbc:mysql://sql.cs.usfca.edu/"+db;
-//		String urlString = "jdbc:mysql://127.0.0.1/" + db;
+//		String urlString = "jdbc:mysql://sql.cs.usfca.edu/"+db;
+		String urlString = "jdbc:mysql://127.0.0.1/" + db;
 		// Must set time zone explicitly in newer versions of mySQL.
 		String timeZoneSettings = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
@@ -62,7 +62,7 @@ public class DataBase {
 	 * This method updates the Events Table when a new event is created by the user
 	 */
 	public boolean updateEventTable(String email, String eventName, String category, String location, String desc,
-			String date, String max, String contact) throws SQLException {
+			String date, String max, String contact, String time) throws SQLException {
 		int hostId = 0;
 
 		// execute a query, which returns a ResultSet object
@@ -79,7 +79,7 @@ public class DataBase {
 		int maxticket = Integer.parseInt(max);
 
 		PreparedStatement updateStmt = con.prepareStatement(
-				"INSERT INTO Events (EventName, Category, Location, Description, HostID, DateOfEvent, MaxTickets, Contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+				"INSERT INTO Events (EventName, Category, Location, Description, HostID, DateOfEvent, MaxTickets, Contact, HostEmail, timeofevent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 		updateStmt.setString(1, eventName);
 		updateStmt.setString(2, category);
@@ -89,6 +89,8 @@ public class DataBase {
 		updateStmt.setString(6, date);
 		updateStmt.setInt(7, maxticket);
 		updateStmt.setString(8, contact);
+		updateStmt.setString(9, email);
+		updateStmt.setString(10, time);
 		return updateStmt.execute();
 
 	}
@@ -229,5 +231,40 @@ public class DataBase {
 
 		return stmt.executeQuery();
 
+	}
+	
+	public boolean deletefromTickets( int eventId) throws SQLException {
+		
+		PreparedStatement deleteStmt = con.prepareStatement(
+				"delete from ticketsummary where EventId = \"" + eventId +"\"");
+		return deleteStmt.execute();
+	}
+	public boolean deletefromEvents( int eventId) throws SQLException {
+		
+		PreparedStatement deleteStmt = con.prepareStatement(
+				"delete from Events where EventID = \"" + eventId +"\"");
+		return deleteStmt.execute();
+	}
+	public void updateEventsTable(String email, String eventName, String category, String location, String desc,
+		String date, String max, String contact, String time, int eventID) throws SQLException {
+	
+	int maxticket = Integer.parseInt(max);
+
+	PreparedStatement updateStmt = con.prepareStatement(
+			"update Events Set EventName = ?, Category = ?, Location = ?, Description = ?, DateOfEvent = ?, MaxTickets = ?, Contact = ?, HostEmail = ?, TimeofEVent =  ? where eventId = ?");
+
+	updateStmt.setString(1, eventName);
+	updateStmt.setString(2, category);
+	updateStmt.setString(3, location);
+	updateStmt.setString(4, desc);
+	updateStmt.setString(5, date);
+	updateStmt.setInt(6, maxticket);
+	updateStmt.setString(7, contact);
+	updateStmt.setString(8, email);
+	updateStmt.setString(9, time);
+	updateStmt.setInt(10, eventID);
+
+	updateStmt.execute();
+		
 	}
 }

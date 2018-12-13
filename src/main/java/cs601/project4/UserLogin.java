@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+
 /*
  * This class is called when the user is trying to login. 
  * If the login validation is successful the page will be redirected to LoginDisplay.class
@@ -60,16 +62,16 @@ public class UserLogin extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		System.out.println("USER VALIDATION");
-		System.out.println("User Email : " + userEmail);
-		System.out.println("User password : " + userPwd);
-		System.out.println("db Password : " + dbPwd);
-		System.out.println("db Salt : " + dbSalt);
+		
 		byte[] saltDb = dbSalt;
-		System.out.println("DB Salt Byte Array: " + Arrays.toString(saltDb));
+		
 
 		try {
-			status = CommonServer.snh.validateLogin(userPwd, dbPwd, dbSalt);
+			if(saltDb != null) {
+				status = CommonServer.snh.validateLogin(userPwd, dbPwd, dbSalt);
+			} else {
+				status = false;
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -90,11 +92,12 @@ public class UserLogin extends HttpServlet {
 			}
 			// generate a new session
 			HttpSession newSession = request.getSession(true);
+			newSession.setAttribute("username", userEmail);
 			System.out.println(newSession);
 			System.out.println(oldSession);
 
 			response.sendRedirect("/logindisplay?username="+userEmail);
-			loginDisplay(out);
+			
 			
 		} else {
 			browserBody = "<html><title>homepage</title>" + "<body>Invalid credentials. Try again or register</body>"
@@ -107,9 +110,7 @@ public class UserLogin extends HttpServlet {
 		}
 	}
 	
-	public void loginDisplay(PrintWriter out){
-		
-	}
+	
 
 
 	}
